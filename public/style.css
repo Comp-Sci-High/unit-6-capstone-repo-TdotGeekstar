@@ -1,0 +1,140 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f8fafc;
+  color: #1f2937;
+}
+
+/* NAVBAR */
+.navbar {
+  background: white;
+  padding: 20px 60px;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0 2px 8px rgba(0,0,0,.05);
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: bold;
+  color: #2563eb;
+}
+
+.nav-links a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #374151;
+}
+
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 100px 20px;
+  background: linear-gradient(to right, #eff6ff, #dbeafe);
+}
+
+.hero h1 {
+  font-size: 48px;
+}
+
+.hero p {
+  color: #6b7280;
+  font-size: 20px;
+}
+
+/* BUTTON */
+.btn {
+  background: #2563eb;
+  color: white;
+  padding: 14px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  display: inline-block;
+  margin: 10px;
+}
+
+.btn:hover {
+  background: #1d4ed8;
+}
+
+/* SECTION */
+.section {
+  max-width: 1000px;
+  margin: auto;
+  padding: 70px 20px;
+  text-align: center;
+}
+
+/* FEATURES */
+.features {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.feature-box {
+  background: white;
+  padding: 25px;
+  width: 250px;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0,0,0,.05);
+}
+
+/* TUTOR CARDS */
+.card {
+  background: white;
+  width: 500px;
+  margin: 20px auto;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0,0,0,.08);
+}
+
+.card h2 {
+  color: #2563eb;
+}
+
+/* FORM */
+.form-box {
+  background: white;
+  width: 450px;
+  margin: 60px auto;
+  padding: 35px;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0,0,0,.08);
+}
+
+.input-field {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+}
+
+/* TESTIMONIAL */
+.testimonial {
+  background: white;
+  width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+  border-left: 5px solid #2563eb;
+}
+
+/* FOOTER */
+.footer {
+  text-align: center;
+  padding: 30px;
+  background: #111827;
+  color: white;
+  margin-top: 60px;
+}
