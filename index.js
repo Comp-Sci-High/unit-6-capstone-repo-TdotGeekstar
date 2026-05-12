@@ -20,7 +20,7 @@ app.set("view engine", "ejs");
 
 // ------------------
 // MongoDB Connection
-// Replace with YOUR real Atlas connection string
+// Replace with your real Atlas connection string
 // ------------------
 mongoose.connect("YOUR_MONGODB_CONNECTION_STRING")
   .then(() => console.log("MongoDB connected"))
@@ -36,7 +36,17 @@ const tutorSchema = new mongoose.Schema({
   subject: String,
   grade: String,
   availability: String,
-  bio: String
+  bio: String,
+
+  maxStudents: {
+    type: Number,
+    default: 1
+  },
+
+  currentStudents: {
+    type: Number,
+    default: 0
+  }
 });
 
 const Tutor = mongoose.model("Tutor", tutorSchema);
@@ -52,7 +62,7 @@ app.get("/", (req, res) => {
 });
 
 
-// Show all tutors
+// Show tutors
 app.get("/tutors", async (req, res) => {
   try {
     const tutors = await Tutor.find();
@@ -79,7 +89,8 @@ app.post("/tutors", async (req, res) => {
       subject,
       grade,
       availability,
-      bio
+      bio,
+      maxStudents
     } = req.body;
 
     const newTutor = new Tutor({
@@ -88,7 +99,8 @@ app.post("/tutors", async (req, res) => {
       subject,
       grade,
       availability,
-      bio
+      bio,
+      maxStudents
     });
 
     await newTutor.save();
@@ -98,6 +110,58 @@ app.post("/tutors", async (req, res) => {
   } catch (error) {
     console.log(error);
     res.send("Error saving tutor");
+  }
+});
+
+
+// Book a session
+app.post("/tutors/:id/book", async (req, res) => {
+  try {
+    const tutor = await Tutor.findById(req.params.id);
+
+    if (!tutor) {
+      return res.send("Tutor not found.");
+    }
+
+    if (tutor.currentStudents >= tutor.maxStudents) {
+      return res.send("This session is full.");
+    }
+
+    tutor.currentStudents += 1;
+
+    await tutor.save();
+
+    res.redirect("/tutors");
+
+  } catch (error) {
+    console.log(error);
+    res.send("Error booking session.");
+  }
+});
+
+
+// Delete tutor
+app.post("/tutors/:id/delete", async (req, res) => {
+  try {
+    const { email } = req.body;
+
+    const tutor = await Tutor.findById(req.params.id);
+
+    if (!tutor) {
+      return res.send("Tutor not found.");
+    }
+
+    if (tutor.email !== email) {
+      return res.send("Email does not match.");
+    }
+
+    await Tutor.findByIdAndDelete(req.params.id);
+
+    res.redirect("/tutors");
+
+  } catch (error) {
+    console.log(error);
+    res.send("Error deleting session.");
   }
 });
 

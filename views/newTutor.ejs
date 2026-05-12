@@ -7,11 +7,11 @@
 <body>
 
 <div class="navbar">
-  <div class="logo">PeerTutor</div>
+  <div class="logo">Comp Sci High PeerTutor</div>
 </div>
 
 <div class="form-box">
-  <h1>Join PeerTutor</h1>
+  <h1>Create a Tutoring Session</h1>
 
   <form action="/tutors" method="POST">
     <input class="input-field" name="name" placeholder="Full Name" required>
@@ -21,14 +21,19 @@
     <input class="input-field" name="availability" placeholder="Availability" required>
     <input class="input-field" name="bio" placeholder="Short Bio" required>
 
+    <input
+      class="input-field"
+      type="number"
+      name="maxStudents"
+      min="1"
+      placeholder="Maximum students allowed"
+      required
+    >
+
     <button class="submit-btn" type="submit">
-      Submit
+      Create Session
     </button>
   </form>
-</div>
-
-<div class="footer">
-  © 2026 PeerTutor
 </div>
 
 </body>

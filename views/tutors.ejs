@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Available Tutors</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div class="navbar">
+  <div class="logo">Comp Sci High PeerTutor</div>
+</div>
+
+<div class="section">
+  <h1>Available Tutors</h1>
+
+  <% tutors.forEach(tutor => { %>
+    <div class="card">
+      <h2><%= tutor.name %></h2>
+
+      <p><strong>Email:</strong> <%= tutor.email %></p>
+      <p><strong>Subject:</strong> <%= tutor.subject %></p>
+      <p><strong>Grade:</strong> <%= tutor.grade %></p>
+      <p><strong>Availability:</strong> <%= tutor.availability %></p>
+      <p><strong>Bio:</strong> <%= tutor.bio %></p>
+
+      <p>
+        <strong>Spots:</strong>
+        <%= tutor.currentStudents %> / <%= tutor.maxStudents %>
+      </p>
+
+      <% if (tutor.currentStudents < tutor.maxStudents) { %>
+        <form action="/tutors/<%= tutor._id %>/book" method="POST">
+          <button class="submit-btn" type="submit">
+            Book Session
+          </button>
+        </form>
+      <% } else { %>
+        <button class="submit-btn" disabled>
+          Session Full
+        </button>
+      <% } %>
+
+      <br>
+
+      <a
+        class="btn"
+        target="_blank"
+        href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Tutoring+Session+with+<%= tutor.name %>"
+      >
+        Add to Google Calendar
+      </a>
+
+      <hr>
+
+      <form action="/tutors/<%= tutor._id %>/delete" method="POST">
+        <input
+          class="input-field"
+          type="email"
+          name="email"
+          placeholder="Enter your email to delete"
+          required
+        >
+
+        <button class="submit-btn" type="submit">
+          Delete Session
+        </button>
+      </form>
+
+    </div>
+  <% }) %>
+
+  <a class="btn" href="/tutors/new">
+    Become a Tutor
+  </a>
+</div>
+
+</body>
+</html>
