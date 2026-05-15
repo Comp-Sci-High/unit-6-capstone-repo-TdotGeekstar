@@ -19,8 +19,11 @@
   },
   "homepage": "https://github.com/Comp-Sci-High/unit-6-capstone-repo-TdotGeekstar#readme",
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "ejs": "^5.0.2",
     "express": "^5.2.1",
+    "express-session": "^1.19.0",
+    "googleapis": "^171.4.0",
     "mongodb": "^7.2.0",
     "mongoose": "^9.6.1",
     "nodemon": "^3.1.14"

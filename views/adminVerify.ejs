@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Approve Student Tutors</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div class="navbar">
+  <div class="logo">
+    Comp Sci High PeerTutor
+  </div>
+</div>
+
+<div class="section">
+  <h1>Pending Student Approvals</h1>
+
+  <% if (pendingStudents.length === 0) { %>
+    <p>No students waiting for approval.</p>
+  <% } %>
+
+  <% pendingStudents.forEach(student => { %>
+    <div class="card">
+      <h2><%= student.username %></h2>
+      <p><%= student.email %></p>
+
+      <form
+        action="/admin/verify/<%= student._id %>"
+        method="POST"
+      >
+        <button
+          class="submit-btn"
+          type="submit"
+        >
+          Approve Student
+        </button>
+      </form>
+    </div>
+  <% }) %>
+
+</div>
+
+</body>
+</html>

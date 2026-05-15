@@ -1,38 +1,78 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Become a Tutor</title>
+  <title>Create Session</title>
   <link rel="stylesheet" href="/style.css">
 </head>
 <body>
 
-<div class="navbar">
-  <div class="logo">Comp Sci High PeerTutor</div>
-</div>
-
 <div class="form-box">
-  <h1>Create a Tutoring Session</h1>
+  <h1>Create Tutoring Session</h1>
 
   <form action="/tutors" method="POST">
-    <input class="input-field" name="name" placeholder="Full Name" required>
-    <input class="input-field" name="email" placeholder="School Email" required>
-    <input class="input-field" name="subject" placeholder="Subject" required>
-    <input class="input-field" name="grade" placeholder="Grade Level" required>
-    <input class="input-field" name="availability" placeholder="Availability" required>
-    <input class="input-field" name="bio" placeholder="Short Bio" required>
+
+    <input
+      class="input-field"
+      name="name"
+      placeholder="Session Name"
+      required
+    >
+
+    <select
+      class="input-field"
+      name="department"
+      required
+    >
+      <option>English Department</option>
+      <option>Math Department</option>
+      <option>Science Department</option>
+      <option>History Department</option>
+      <option>Computer Science Department</option>
+    </select>
+
+    <input
+      class="input-field"
+      name="subject"
+      placeholder="Subject"
+      required
+    >
+
+    <input
+      class="input-field"
+      name="bio"
+      placeholder="Description"
+      required
+    >
+
+    <input
+      class="input-field"
+      type="date"
+      name="sessionDate"
+      required
+    >
+
+    <input
+      class="input-field"
+      type="time"
+      name="sessionTime"
+      required
+    >
 
     <input
       class="input-field"
       type="number"
       name="maxStudents"
       min="1"
-      placeholder="Maximum students allowed"
       required
     >
 
-    <button class="submit-btn" type="submit">
+    <button
+      class="submit-btn"
+      type="submit"
+    >
       Create Session
     </button>
+
   </form>
 </div>
 
